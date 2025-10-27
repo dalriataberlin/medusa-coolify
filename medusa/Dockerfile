@@ -1,4 +1,4 @@
-FROM node:23 as builder
+FROM node:24 as builder
 
 WORKDIR /app/medusa
 
