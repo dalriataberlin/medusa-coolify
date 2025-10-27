@@ -13,7 +13,7 @@ RUN yarn install --loglevel=error
 RUN yarn run build
 
 
-FROM node:23
+FROM node:24
 
 # Bug https://github.com/coollabsio/coolify/issues/1930
 ARG COOKIE_SECRET
