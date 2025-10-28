@@ -12,6 +12,7 @@ import {
     CreateEmailOptions
 } from "resend"
 import { orderPlacedEmail } from "./emails/order-placed"
+import { userInvitedEmail } from "./emails/user-invited"
 
 
 type ResendOptions = {
@@ -29,10 +30,13 @@ type InjectedDependencies = {
 
 enum Templates {
     ORDER_PLACED = "order-placed",
+    USER_INVITED = "user-invited",
+
 }
 
 const templates: { [key in Templates]?: (props: unknown) => React.ReactNode } = {
     [Templates.ORDER_PLACED]: orderPlacedEmail,
+    [Templates.USER_INVITED]: userInvitedEmail,
 }
 
 class ResendNotificationProviderService extends AbstractNotificationProviderService {
@@ -83,6 +87,9 @@ class ResendNotificationProviderService extends AbstractNotificationProviderServ
         switch (template) {
             case Templates.ORDER_PLACED:
                 return "Order Confirmation"
+            case Templates.USER_INVITED:
+                return "You've been invited to join the Dalriata management platform"
+
             default:
                 return "New Email"
         }
